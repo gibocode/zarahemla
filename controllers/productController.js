@@ -52,7 +52,7 @@ const createProduct = async (req, res) => {
         if (result.insertedId) {
             res.status(204).send();
         } else {
-            res.status(500).json(result.error || "Could not create product.");
+            res.status(404).json(result.error || "Product not found.");
         }
     } catch (error) {
         return res.status(500).json({ message: "Could not create product." });
@@ -83,11 +83,33 @@ const updateProduct = async (req, res) => {
         if (result.modifiedCount > 0) {
             res.status(204).send();
         } else {
-            res.status(500).json(result.error || "Could not update product.")
+            res.status(404).json(result.error || "Product not found.")
         }
     } catch (error) {
         return res.status(500).json({ message: "Could not update product." });
     }
 };
 
-module.exports = { getAllProducts, getProductById, createProduct, updateProduct };
+// Delete product
+const deleteProduct = async (req, res) => {
+    // #swagger.tags = ['Products']
+    try {
+        const id = req.params.id;
+        if (ObjectId.isValid(id) === false) {
+            return res.status(400).json({ message: "Invalid product ID." });
+        }
+        const objectId = new ObjectId(id);
+        const product = new Product();
+        const result = await product.delete(objectId);
+        if (result.deletedCount > 0) {
+            res.status(204).send();
+        } else {
+            res.status(404).json(result.error || 'Product not found.');
+        }
+    }
+    catch (error) {
+        return res.status(500).json({ message: "Could not delete product." });
+    }
+};
+
+module.exports = { getAllProducts, getProductById, createProduct, updateProduct, deleteProduct };

@@ -26,6 +26,11 @@ class Product {
     async update(objectId, productData) {
         return await this.collection.replaceOne({ _id: objectId }, productData);
     }
+
+    // Delete product
+    async delete(objectId) {
+        return await this.collection.deleteOne({ _id: objectId });
+    }
 }
 
 module.exports = Product;
