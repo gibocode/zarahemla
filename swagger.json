@@ -26,6 +26,55 @@
             "description": "Internal Server Error"
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "productId": {
+                  "example": "any"
+                },
+                "productName": {
+                  "example": "any"
+                },
+                "productDescription": {
+                  "example": "any"
+                },
+                "productColor": {
+                  "example": "any"
+                },
+                "productBrand": {
+                  "example": "any"
+                },
+                "productPrice": {
+                  "example": "any"
+                },
+                "productImage": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
     "/products/{id}": {

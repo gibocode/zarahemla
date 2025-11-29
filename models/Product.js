@@ -16,6 +16,11 @@ class Product {
     async getByObjectId(objectId) {
         return await this.collection.findOne({ _id: objectId });
     }
+
+    // Create product
+    async create(productData) {
+        return await this.collection.insertOne(productData);
+    }
 }
 
 module.exports = Product;

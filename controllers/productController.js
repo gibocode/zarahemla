@@ -33,4 +33,30 @@ const getProductById = async (req, res) => {
     }
 };
 
-module.exports = { getAllProducts, getProductById };
+// Create product
+const createProduct = async (req, res) => {
+    // #swagger.tags = ['Products']
+    try {
+        const data = req.body;
+        const productData = {
+            productId: data.productId,
+            productName: data.productName,
+            productDescription: data.productDescription,
+            productColor: data.productColor,
+            productBrand: data.productBrand,
+            productPrice: parseFloat(data.productPrice),
+            productImage: data.productImage
+        };
+        const product = new Product();
+        const result = await product.create(productData);
+        if (result.insertedId) {
+            res.status(204).send();
+        } else {
+            res.status(500).json(result.error || "Could not create product.");
+        }
+    } catch (error) {
+        return res.status(500).json({ message: "Could not create product." });
+    }
+};
+
+module.exports = { getAllProducts, getProductById, createProduct };
