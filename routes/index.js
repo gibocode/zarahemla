@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const swaggerRoute = require("./swaggerRoute");
+const productRoute = require("./productRoute");
 
 // Home Page
 router.get("/", (req, res) => {
@@ -9,5 +10,8 @@ router.get("/", (req, res) => {
 
 // Swagger Routes (API Documentation)
 router.use("/", swaggerRoute);
+
+// Product Routes
+router.use("/products", productRoute);
 
 module.exports = router;
