@@ -20,9 +20,9 @@ const getCategoryById = async (req, res) => {
         if (!ObjectId.isValid(categoryId)) {
             return res.status(400).json({ message: 'Invalid ID format' });
         }
-
+        console.log(categoryId);
         const category = new Category();
-        const result = await category.getById(req.params.id);
+        const result = await category.getById(categoryId);
 
         if (!result) {
             return res.status(404).json({ message: 'Category not found' });
@@ -63,21 +63,23 @@ const createCategory = async (req, res) => {
 const deleteCategory = async (req, res) => {
     // #swagger.tags = ['Categories']
     try {
-        const categoryId = req.params.id;
-        if (!ObjectId.isValid(categoryId)) {
-            return res.status(400).json({ message: 'Invalid ID format' });
+        const { id: categoryId } = req.params;
+
+        if (!categoryId || !ObjectId.isValid(categoryId)) {
+            return res.status(400).json({ message: 'Invalid category ID format.' });
         }
 
         const category = new Category();
-        const result = await category.deleteCategory(req.params.id);
+        const result = await category.deleteCategory(categoryId);
 
-        if (!result) {
-            return res.status(404).json({ message: 'Category not found' });
+        if (!result || result.deletedCount === 0) {
+            return res.status(404).json({ message: 'Category not found.' });
         }
 
-        return res.json({ message: 'Category deleted successfully' });
+        return res.json({ message: 'Category deleted successfully.' });
+
     } catch (error) {
-        console.error(error);
+        console.error("Error deleting category:", error);
         return res.status(500).json({ message: "Could not delete category." });
     }
 };

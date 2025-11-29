@@ -6,8 +6,8 @@ validate.categoryCreateDataValidationRules = () => {
     return [
         body("categoryId")
             .trim()
-            .matches(/^[A-Z0-9]{3}$/i)
-            .withMessage("Category ID must be exactly 3 alphanumeric characters."),
+            .matches(/^[A-Z0-9]{4}$/i)
+            .withMessage("Category ID must be exactly 4 alphanumeric characters."),
         body("categoryName")
             .trim()
             .notEmpty().withMessage("Category name is required."),
