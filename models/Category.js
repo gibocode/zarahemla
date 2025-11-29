@@ -25,6 +25,10 @@ class Category {
     async deleteCategory(id) {
         return await this.collection.deleteOne({ _id: new ObjectId(id) });
     }
+
+    async updateCategory(id, category) {
+        return await this.collection.updateOne({ _id: new ObjectId(id) }, { $set: category });
+    }
 }
 
 module.exports = Category;

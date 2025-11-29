@@ -22,4 +22,11 @@ router.delete(
     categoryController.deleteCategory
 );
 
+// Update category
+router.put(
+    "/:id",
+    categoryValidator.categoryUpdateDataValidationRules(),
+    categoryValidator.checkCategoryData,
+    categoryController.updateCategory
+);
 module.exports = router;
