@@ -17,6 +17,14 @@ class Category {
     async getById(id) {
         return await this.collection.findOne({ _id: new ObjectId(id) });
     }
+
+    async createCategory(category) {
+        return await this.collection.insertOne(category);
+    }
+
+    async deleteCategory(id) {
+        return await this.collection.deleteOne({ _id: new ObjectId(id) });
+    }
 }
 
 module.exports = Category;
