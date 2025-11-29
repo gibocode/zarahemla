@@ -83,4 +83,29 @@ const deleteCategory = async (req, res) => {
     }
 };
 
-module.exports = { getAllCategories, getCategoryById, createCategory, deleteCategory };
+const updateCategory = async (req, res) => {
+    // #swagger.tags = ['Categories']
+    try {
+        const { id } = req.params;
+        const { categoryId, categoryName, categoryDescription } = req.body;
+
+        if (!id || !ObjectId.isValid(id)) {
+            return res.status(400).json({ message: 'Invalid category ID format.' });
+        }
+
+        const category = new Category();
+        const result = await category.updateCategory(id, { categoryId, categoryName, categoryDescription });
+
+        if (!result || result.modifiedCount === 0) {
+            return res.status(404).json({ message: 'Category not found.' });
+        }
+
+        return res.json({ message: 'Category updated successfully.' });
+
+    } catch (error) {
+        console.error("Error updating category:", error);
+        return res.status(500).json({ message: "Could not update category." });
+    }
+};
+
+module.exports = { getAllCategories, getCategoryById, createCategory, deleteCategory, updateCategory };
