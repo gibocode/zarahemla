@@ -11,6 +11,11 @@ class Product {
     async getAll() {
         return await this.collection.find().toArray();
     }
+
+    // Get product by object ID
+    async getByObjectId(objectId) {
+        return await this.collection.findOne({ _id: objectId });
+    }
 }
 
 module.exports = Product;

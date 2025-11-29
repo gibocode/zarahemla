@@ -20,7 +20,7 @@
     "url": "https://github.com/gibocode/zarahemla/issues"
   },
   "homepage": "https://github.com/gibocode/zarahemla#readme",
-  "description": "",
+  "description": "An application that contains the APIs for an e-commerce store called Zarahemla Store.",
   "dependencies": {
     "body-parser": "^2.2.1",
     "cors": "^2.8.5",
