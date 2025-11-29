@@ -16,4 +16,12 @@ router.post(
     productController.createProduct
 );
 
+// Update product by object ID
+router.put(
+    "/:id",
+    productValidator.productDataValidationRules(),
+    productValidator.checkProductData,
+    productController.updateProduct
+);
+
 module.exports = router;

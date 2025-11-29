@@ -21,6 +21,11 @@ class Product {
     async create(productData) {
         return await this.collection.insertOne(productData);
     }
+
+    // Update product
+    async update(objectId, productData) {
+        return await this.collection.replaceOne({ _id: objectId }, productData);
+    }
 }
 
 module.exports = Product;

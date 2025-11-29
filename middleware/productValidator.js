@@ -6,24 +6,39 @@ validate.productDataValidationRules = () => {
     return [
         body("productId")
             .trim()
-            .notEmpty().withMessage("Product ID is required."),
+            .notEmpty()
+            .isString()
+            .withMessage("Product ID is required."),
         body("productName")
             .trim()
-            .notEmpty().withMessage("Product name is required."),
+            .notEmpty()
+            .isString()
+            .withMessage("Product name is required."),
         body("productDescription")
             .trim()
-            .notEmpty().withMessage("Product description is required."),
+            .notEmpty()
+            .isString()
+            .withMessage("Product description is required."),
         body("productColor")
             .trim()
-            .notEmpty().withMessage("Product color is required."),
+            .notEmpty()
+            .isString()
+            .withMessage("Product color is required."),
         body("productBrand")
             .trim()
-            .notEmpty().withMessage("Product brand is required."),
+            .notEmpty()
+            .isString()
+            .withMessage("Product brand is required."),
         body("productPrice")
-            .isFloat({ gt: 0 }).withMessage("Product price must be a number greater than 0."),
+            .trim()
+            .notEmpty()
+            .isFloat({ gt: 0 })
+            .withMessage("Product price must be a number greater than 0."),
         body("productImage")
             .trim()
-            .notEmpty().withMessage("Product image URL is required.")
+            .notEmpty()
+            .isString()
+            .withMessage("Product image URL is required.")
     ]
 };
 
