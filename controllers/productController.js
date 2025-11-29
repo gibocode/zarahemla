@@ -52,7 +52,7 @@ const createProduct = async (req, res) => {
         if (result.insertedId) {
             res.status(204).send();
         } else {
-            res.status(404).json(result.error || "Product not found.");
+            res.status(500).json(result.error || "Could not create product.");
         }
     } catch (error) {
         return res.status(500).json({ message: "Could not create product." });
