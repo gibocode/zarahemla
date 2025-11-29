@@ -20,7 +20,6 @@ const getCategoryById = async (req, res) => {
         if (!ObjectId.isValid(categoryId)) {
             return res.status(400).json({ message: 'Invalid ID format' });
         }
-        console.log(categoryId);
         const category = new Category();
         const result = await category.getById(categoryId);
 
