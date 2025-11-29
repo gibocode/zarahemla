@@ -1,0 +1,30 @@
+{
+  "name": "zarahemla",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "swagger": "node swagger.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gibocode/zarahemla.git"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Gilbor Camporazo Jr.",
+    "email": "gilborcamporazojr@programmer.net"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gibocode/zarahemla/issues"
+  },
+  "homepage": "https://github.com/gibocode/zarahemla#readme",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^2.2.1",
+    "express": "^5.1.0",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.1"
+  }
+}
