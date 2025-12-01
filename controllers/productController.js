@@ -3,7 +3,6 @@ const ObjectId = require("mongodb").ObjectId;
 
 // Get all products
 const getAllProducts = async (req, res) => {
-    // #swagger.tags = ['Products']
     try {
         const product = new Product();
         const result = await product.getAll();
@@ -15,7 +14,6 @@ const getAllProducts = async (req, res) => {
 
 // Get product by ID
 const getProductById = async (req, res) => {
-    // #swagger.tags = ['Products']
     try {
         const id = req.params.id;
         if (ObjectId.isValid(id) === false) {
@@ -35,7 +33,6 @@ const getProductById = async (req, res) => {
 
 // Create product
 const createProduct = async (req, res) => {
-    // #swagger.tags = ['Products']
     try {
         const data = req.body;
         const productData = {
@@ -61,7 +58,6 @@ const createProduct = async (req, res) => {
 
 // Update product
 const updateProduct = async (req, res) => {
-    // #swagger.tags = ['Products']
     try {
         const id = req.params.id;
         if (ObjectId.isValid(id) === false) {
@@ -92,7 +88,6 @@ const updateProduct = async (req, res) => {
 
 // Delete product
 const deleteProduct = async (req, res) => {
-    // #swagger.tags = ['Products']
     try {
         const id = req.params.id;
         if (ObjectId.isValid(id) === false) {
@@ -112,4 +107,10 @@ const deleteProduct = async (req, res) => {
     }
 };
 
-module.exports = { getAllProducts, getProductById, createProduct, updateProduct, deleteProduct };
+module.exports = {
+    getAllProducts,
+    getProductById,
+    createProduct,
+    updateProduct,
+    deleteProduct
+};

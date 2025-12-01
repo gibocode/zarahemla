@@ -2,7 +2,6 @@ const Category = require("../models/Category");
 const { ObjectId } = require("mongodb");
 
 const getAllCategories = async (req, res) => {
-    // #swagger.tags = ['Categories']
     try {
         const category = new Category();
         const result = await category.getAll();
@@ -14,7 +13,6 @@ const getAllCategories = async (req, res) => {
 
 
 const getCategoryById = async (req, res) => {
-    // #swagger.tags = ['Categories']
     try {
         const categoryId = req.params.id;
         if (!ObjectId.isValid(categoryId)) {
@@ -35,7 +33,6 @@ const getCategoryById = async (req, res) => {
 };
 
 const createCategory = async (req, res) => {
-    // #swagger.tags = ['Categories']
     try {
 
         const { categoryName, categoryDescription, categoryId } = req.body;
@@ -60,7 +57,6 @@ const createCategory = async (req, res) => {
 
 
 const deleteCategory = async (req, res) => {
-    // #swagger.tags = ['Categories']
     try {
         const { id: categoryId } = req.params;
 
@@ -84,7 +80,6 @@ const deleteCategory = async (req, res) => {
 };
 
 const updateCategory = async (req, res) => {
-    // #swagger.tags = ['Categories']
     try {
         const { id } = req.params;
         const { categoryId, categoryName, categoryDescription } = req.body;

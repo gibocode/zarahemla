@@ -5,7 +5,7 @@
     "description": "An API documentation for Zarahemla store.",
     "version": "1.0.0"
   },
-  "host": "zarahemla.onrender.com",
+  "host": "",
   "basePath": "/",
   "schemes": [
     "https",
@@ -71,10 +71,18 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "GitHubOAuth": []
+          }
+        ]
       }
     },
     "/products/{id}": {
@@ -156,13 +164,21 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "GitHubOAuth": []
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -184,13 +200,21 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "GitHubOAuth": []
+          }
+        ]
       }
     },
     "/categories/": {
