@@ -6,11 +6,12 @@ const passport = require("passport");
 router.get(
     "/github",
     passport.authenticate("github",
-    {
-        failureRedirect: "/",
-        session: false
-    }),
+        {
+            failureRedirect: "/",
+            session: false
+        }),
     (req, res) => {
+        console.log("User authenticated:", req.user);
         req.session.user = req.user;
         res.redirect("/");
     }
@@ -20,7 +21,7 @@ router.get(
 router.get(
     "/login",
     passport.authenticate("github"),
-    (req, res) => {}
+    (req, res) => { }
 );
 
 // Logout Route
