@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const categoryController = require("../controllers/categoryController");
 const categoryValidator = require("../middleware/categoryValidator");
+const { isAuthenticated } = require("../middleware/authenticate");
+
 
 // Get all Categories
 router.get("/", categoryController.getAllCategories);
@@ -11,6 +13,7 @@ router.get("/:id", categoryController.getCategoryById);
 // Create category
 router.post(
     "/",
+    isAuthenticated,
     categoryValidator.categoryCreateDataValidationRules(),
     categoryValidator.checkCategoryData,
     categoryController.createCategory
@@ -19,12 +22,14 @@ router.post(
 // Delete category
 router.delete(
     "/:id",
+    isAuthenticated,
     categoryController.deleteCategory
 );
 
 // Update category
 router.put(
     "/:id",
+    isAuthenticated,
     categoryValidator.categoryUpdateDataValidationRules(),
     categoryValidator.checkCategoryData,
     categoryController.updateCategory
