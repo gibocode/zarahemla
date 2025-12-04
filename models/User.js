@@ -16,21 +16,6 @@ class User {
     async create(userData) {
         return await this.collection.insertOne(userData);
     }
-
-    // Get all users
-    async getAll() {
-        return await this.collection.find().toArray();
-    }
-
-    // Update user by object ID
-    async updateById(id, userData) {
-        return await this.collection.updateOne({ _id: id }, { $set: userData });
-    }
-
-    // Delete user by object ID
-    async deleteById(id) {
-        return await this.collection.deleteOne({ _id: id });
-    }
 }
 
 module.exports = User;

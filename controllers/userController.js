@@ -25,9 +25,7 @@ const createUser = async (req, res) => {
     try {
         const data = req.body;
         const userData = {
-            gitHubId: data.gitHubId,
-            username: data.username,
-            displayName: data.displayName
+            userId: data.userId,
         };
         const user = new User();
         const result = await user.create(userData);
@@ -41,55 +39,4 @@ const createUser = async (req, res) => {
     }
 };
 
-const getAllUsers = async (req, res) => {
-    try {
-        const user = new User();
-        const result = await user.getAll();
-        if (!result) {
-            return res.status(404).json({ message: "Users not found." });
-        }
-        return res.json(result);
-    } catch (error) {
-        return res.status(500).json({ message: "Could not retrieve users." });
-    }
-};
-
-const updateUser = async (req, res) => {
-    try {
-        const id = req.params.id;
-        if (ObjectId.isValid(id) === false) {
-            return res.status(400).json({ message: "Invalid user ID." });
-        }
-        const user = new User();
-        const result = await user.updateById(id, req.body);
-
-        if (!result || result.modifiedCount === 0) {
-            return res.status(404).json({ message: 'User not found.' });
-        }
-        return res.json(result);
-    } catch (error) {
-        return res.status(500).json({ message: "Could not update user." });
-    }
-};
-
-const deleteUser = async (req, res) => {
-    try {
-        const id = req.params.id;
-        if (ObjectId.isValid(id) === false) {
-            return res.status(400).json({ message: "Invalid user ID." });
-        }
-        const user = new User();
-        const result = await user.deleteById(id);
-
-        if (!result || result.deletedCount === 0) {
-            return res.status(404).json({ message: 'User not found.' });
-        }
-
-        return res.json(result);
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ message: "Could not delete user." });
-    }
-};
-
-module.exports = { getUserById, createUser, getAllUsers, updateUser, deleteUser };
+module.exports = { getUserById, createUser };
