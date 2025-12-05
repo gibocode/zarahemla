@@ -46,3 +46,4 @@ You can update the documentation by `npm run swagger` or `node swagger.js`. The 
 ## Developers
 * Gilbor Camporazo Jr.
 * Nelson Alexander Ortega
+* Francis Happy
