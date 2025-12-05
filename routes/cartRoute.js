@@ -13,4 +13,12 @@ router.post(
     cartController.createCart
 );
 
+// Delete cart by object ID
+router.delete(
+    // #swagger.security = [{ "GitHubOAuth": [] }]
+    "/:id",
+    isAuthenticated,
+    cartController.deleteCart
+);
+
 module.exports = router;

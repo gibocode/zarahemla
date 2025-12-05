@@ -383,7 +383,7 @@
         }
       }
     },
-    "/users/{username}/carts/": {
+    "/carts/": {
       "post": {
         "tags": [
           "Carts"
@@ -391,18 +391,15 @@
         "description": "",
         "parameters": [
           {
-            "name": "username",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
             "name": "body",
             "in": "body",
             "schema": {
               "type": "object",
               "properties": {
                 "cartId": {
+                  "example": "any"
+                },
+                "username": {
                   "example": "any"
                 },
                 "cartItems": {
@@ -421,6 +418,44 @@
           },
           "401": {
             "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "GitHubOAuth": []
+          }
+        ]
+      }
+    },
+    "/carts/{id}": {
+      "delete": {
+        "tags": [
+          "Carts"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"

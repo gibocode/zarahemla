@@ -65,7 +65,7 @@ router.use(
 // Cart Routes
 router.use(
     // #swagger.tags = ['Carts']
-    "/users/:username/carts",
+    "/carts",
     cartRoute
 );
 

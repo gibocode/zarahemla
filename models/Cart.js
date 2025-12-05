@@ -11,6 +11,11 @@ class Cart {
     async create(cartData) {
         return await this.collection.insertOne(cartData);
     }
+
+    // Delete product
+    async delete(objectId) {
+        return await this.collection.deleteOne({ _id: objectId });
+    }
 }
 
 module.exports = Cart;

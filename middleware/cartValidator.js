@@ -9,6 +9,11 @@ validate.cartDataValidationRules = () => {
             .notEmpty()
             .isString()
             .withMessage("Cart ID is required."),
+        body("username")
+            .trim()
+            .notEmpty()
+            .isString()
+            .withMessage("Username is required."),
         body("cartItems")
             .isArray()
             .withMessage("Cart items must be in array format."),

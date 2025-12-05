@@ -1,13 +1,13 @@
 const Cart = require("../models/Cart");
+const ObjectId = require("mongodb").ObjectId;
 
 // Create cart
 const createCart = async (req, res) => {
     try {
         const data = req.body;
-        const user = req.session.user;
         const cartData = {
             cartId: data.cartId,
-            username: user.username,
+            username: data.username,
             cartItems: data.cartItems,
         };
         const cart = new Cart();
@@ -22,4 +22,25 @@ const createCart = async (req, res) => {
     }
 };
 
-module.exports = { createCart };
+// Delete cart
+const deleteCart = async (req, res) => {
+    try {
+        const id = req.params.id;
+        if (ObjectId.isValid(id) === false) {
+            return res.status(400).json({ message: "Invalid cart ID." });
+        }
+        const objectId = new ObjectId(id);
+        const cart = new Cart();
+        const result = await cart.delete(objectId);
+        if (result.deletedCount > 0) {
+            res.status(204).send();
+        } else {
+            res.status(404).json(result.error || 'Cart not found.');
+        }
+    }
+    catch (error) {
+        return res.status(500).json({ message: "Could not delete cart." });
+    }
+};
+
+module.exports = { createCart, deleteCart };
