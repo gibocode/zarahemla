@@ -3,6 +3,7 @@ const authenticationRoute = require("./authenticationRoute");
 const swaggerRoute = require("./swaggerRoute");
 const productRoute = require("./productRoute");
 const categoryRoute = require("./categoryRoute");
+const cartRoute = require("./cartRoute");
 
 // Homepage Route
 router.get("/", (req, res) => {
@@ -59,6 +60,13 @@ router.use(
     // #swagger.tags = ['Categories']
     "/categories",
     categoryRoute
+);
+
+// Cart Routes
+router.use(
+    // #swagger.tags = ['Carts']
+    "/users/:username/carts",
+    cartRoute
 );
 
 module.exports = router;

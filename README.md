@@ -29,7 +29,7 @@ For `production` environment:
 
 
 ## API Documentation (Swagger)
-You can update the documentation by `npm run swagger` or `node swagger.js`. The documentation can be accessed from http://localhost:3000/api-docs (local) or https://zarahemla.onrender.com (production).
+You can update the documentation by `npm run swagger` or `node swagger.js`. The documentation can be accessed from http://localhost:3000/api-docs (local) or https://zarahemla.onrender.com/api-docs (production).
 
 ## Packages
 * express
@@ -42,6 +42,9 @@ You can update the documentation by `npm run swagger` or `node swagger.js`. The 
 * passport
 * passport-github2
 * express-session
+
+## Packages (Development)
+* jest
 
 ## Developers
 * Gilbor Camporazo Jr.

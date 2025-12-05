@@ -9,7 +9,7 @@ const User = require("./models/User");
 
 app.use(express.json())
 
-    // // Parse URL-encoded bodies (for form submissions)
+    // Parse URL-encoded bodies (for form submissions)
     .use(express.urlencoded({ extended: true }))
 
     // Session and security
