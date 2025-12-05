@@ -27,9 +27,11 @@ For `production` environment:
    * `MONGODB_URI`
    * `GITHUB_CLIENT_SECRET`
 
-
 ## API Documentation (Swagger)
 You can update the documentation by `npm run swagger` or `node swagger.js`. The documentation can be accessed from http://localhost:3000/api-docs (local) or https://zarahemla.onrender.com/api-docs (production).
+
+## Testing (Jest + Supertest)
+```npm test```
 
 ## Packages
 * express
@@ -45,6 +47,7 @@ You can update the documentation by `npm run swagger` or `node swagger.js`. The 
 
 ## Packages (Development)
 * jest
+* supertest
 
 ## Developers
 * Gilbor Camporazo Jr.

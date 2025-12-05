@@ -5,6 +5,7 @@ const { isAuthenticated } = require("../middleware/authenticate");
 
 // Create cart
 router.post(
+    // #swagger.summary = 'Create a new cart'
     // #swagger.security = [{ "GitHubOAuth": [] }]
     "/",
     isAuthenticated,
@@ -15,6 +16,7 @@ router.post(
 
 // Delete cart by object ID
 router.delete(
+    // #swagger.summary = 'Delete a cart by ID'
     // #swagger.security = [{ "GitHubOAuth": [] }]
     "/:id",
     isAuthenticated,

@@ -17,6 +17,7 @@
         "tags": [
           "Products"
         ],
+        "summary": "Retrieve all products",
         "description": "",
         "responses": {
           "200": {
@@ -31,6 +32,7 @@
         "tags": [
           "Products"
         ],
+        "summary": "Create a new product",
         "description": "",
         "parameters": [
           {
@@ -90,6 +92,7 @@
         "tags": [
           "Products"
         ],
+        "summary": "Retrieve a product by ID",
         "description": "",
         "parameters": [
           {
@@ -118,6 +121,7 @@
         "tags": [
           "Products"
         ],
+        "summary": "Update an existing product by ID",
         "description": "",
         "parameters": [
           {
@@ -184,6 +188,7 @@
         "tags": [
           "Products"
         ],
+        "summary": "Delete a product by ID",
         "description": "",
         "parameters": [
           {
@@ -222,6 +227,7 @@
         "tags": [
           "Categories"
         ],
+        "summary": "Retrieve all categories",
         "description": "",
         "responses": {
           "200": {
@@ -236,6 +242,7 @@
         "tags": [
           "Categories"
         ],
+        "summary": "Create a new category",
         "description": "",
         "parameters": [
           {
@@ -270,7 +277,12 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "GitHubOAuth": []
+          }
+        ]
       }
     },
     "/categories/{id}": {
@@ -278,6 +290,7 @@
         "tags": [
           "Categories"
         ],
+        "summary": "Retrieve a category by ID",
         "description": "",
         "parameters": [
           {
@@ -293,37 +306,6 @@
           },
           "400": {
             "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Categories"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
           },
           "404": {
             "description": "Not Found"
@@ -337,6 +319,7 @@
         "tags": [
           "Categories"
         ],
+        "summary": "Update an existing category by ID",
         "description": "",
         "parameters": [
           {
@@ -380,7 +363,49 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "GitHubOAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Categories"
+        ],
+        "summary": "Delete a category by ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "GitHubOAuth": []
+          }
+        ]
       }
     },
     "/carts/": {
@@ -388,6 +413,7 @@
         "tags": [
           "Carts"
         ],
+        "summary": "Create a new cart",
         "description": "",
         "parameters": [
           {
@@ -435,6 +461,7 @@
         "tags": [
           "Carts"
         ],
+        "summary": "Delete a cart by ID",
         "description": "",
         "parameters": [
           {
