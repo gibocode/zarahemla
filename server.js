@@ -35,7 +35,7 @@ app.use(express.json())
     .use(cors({ origin: "*" }))
 
     // Main Routes
-   .use("/", require("./routes"));
+    .use("/", require("./routes"));
 
 // GitHub OAuth using passport
 passport.use(new GitHubStrategy({
@@ -74,6 +74,7 @@ passport.deserializeUser((obj, done) => done(null, obj));
 process.on("uncaughtException", (err) => {
     console.error("There was an uncaught error", err);
 });
+
 
 // Initialize database and start server
 database.initialize((err) => {
