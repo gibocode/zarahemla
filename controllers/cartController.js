@@ -47,27 +47,34 @@ const getCartByUser = async (req, res) => {
     } catch (error) {
         console.error(error);
         return res.status(500).json({ message: "Could not retrieve carts for user." });
-    }   
+    }
 };
 
-//Get cart by Id
+// Get cart by Id
 const getCartById = async (req, res) => {
     try {
-        const cartId = req.params.id;
-        const carts = new Cart();
-        const cart = await carts.getById(cartId);
-        if (!cart) {
+        const id = req.params.id;
+        if (ObjectId.isValid(id) === false) {
+            return res.status(400).json({ message: "Invalid cart ID." });
+        }
+        const cart = new Cart();
+        const objectId = new ObjectId(id);
+        const result = await cart.getByObjectId(objectId);
+        if (!result) {
             return res.status(404).json({ message: "Cart not found." });
-        } res.status(200).json(cart);
+        } res.status(200).json(result);
     } catch (error) {
         return res.status(500).json({ message: "Could not retrieve specific cart."});
     }
 };
 
-//update cart
+// Update cart
 const updateCart = async (req, res) => {
     try {
-        const cartId = req.params.id;
+        const id = req.params.id;
+        if (ObjectId.isValid(id) === false) {
+            return res.status(400).json({ message: "Invalid cart ID." });
+        }
         const data = req.body;
         const cartData = {
             cartId: data.cartId,
@@ -75,9 +82,12 @@ const updateCart = async (req, res) => {
             cartItems: data.cartItems,
         };
         const cart = new Cart();
-        const result = await cart.update(cartId, cartData);
+        const objectId = new ObjectId(id);
+        const result = await cart.update(objectId, cartData);
         if (result.modifiedCount > 0) {
             res.status(204).send();
+        } else {
+            res.status(404).json(result.error || 'Cart not found.');
         }
     } catch (error) {
         return res.status(500).json({ message: "Could not update cart." });
@@ -91,8 +101,8 @@ const deleteCart = async (req, res) => {
         if (ObjectId.isValid(id) === false) {
             return res.status(400).json({ message: "Invalid cart ID." });
         }
-        const objectId = new ObjectId(id);
         const cart = new Cart();
+        const objectId = new ObjectId(id);
         const result = await cart.delete(objectId);
         if (result.deletedCount > 0) {
             res.status(204).send();

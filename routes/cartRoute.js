@@ -19,8 +19,8 @@ router.get(
 
 // Get cart by cartId
 router.get(
-    // #swagger.summary = 'Retrieve cart by cart ID'
-    "/:cartId",
+    // #swagger.summary = 'Retrieve cart by Object ID'
+    "/:id",
     cartController.getCartById
 )
 
@@ -36,9 +36,9 @@ router.post(
 );
 
 router.put(
-    // #swagger.summary = 'Update an existing cart by cart ID'
+    // #swagger.summary = 'Update an existing cart by Object ID'
     // #swagger.security = [{ "GitHubOAuth": [] }]
-    "/:cartId",
+    "/:id",
     isAuthenticated,
     cartValidator.cartDataValidationRules(),
     cartValidator.checkCartData,

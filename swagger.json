@@ -688,16 +688,16 @@
         }
       }
     },
-    "/carts/{cartId}": {
+    "/carts/{id}": {
       "get": {
         "tags": [
           "Carts"
         ],
-        "summary": "Retrieve cart by cart ID",
+        "summary": "Retrieve cart by Object ID",
         "description": "",
         "parameters": [
           {
-            "name": "cartId",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -706,6 +706,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "404": {
             "description": "Not Found"
@@ -719,11 +722,11 @@
         "tags": [
           "Carts"
         ],
-        "summary": "Update an existing cart by cart ID",
+        "summary": "Update an existing cart by Object ID",
         "description": "",
         "parameters": [
           {
-            "name": "cartId",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -757,6 +760,9 @@
           "401": {
             "description": "Unauthorized"
           },
+          "404": {
+            "description": "Not Found"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -766,9 +772,7 @@
             "GitHubOAuth": []
           }
         ]
-      }
-    },
-    "/carts/{id}": {
+      },
       "delete": {
         "tags": [
           "Carts"

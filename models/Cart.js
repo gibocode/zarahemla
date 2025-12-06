@@ -12,27 +12,27 @@ class Cart {
         return await this.collection.insertOne(cartData);
     }
 
-    //Get All
+    // Get all carts
     async getAll() {
         return await this.collection.find({}).toArray();
     }
 
-    // Get by user
+    // Get cart by user
     async getByUser(username) {
         return await this.collection.find({ username: username }).toArray();
     }
 
-    //Get Especific Cart by cartID
-    async getById(cartId) {
-        return await this.collection.findOne({ cartId: cartId });
+    // Get specific cart by object ID
+    async getByObjectId(objectId) {
+        return await this.collection.findOne({ _id: objectId });
     }
 
-    //Update specific Cart by cartId
-    async update(cartId, cartData) {
-        return await this.collection.updateOne({ cartId: cartId }, { $set: cartData });
+    // Update specific cart by object ID
+    async update(objectId, cartData) {
+        return await this.collection.updateOne({ _id: objectId }, { $set: cartData });
     }
 
-    // Delete product
+    // Delete cart by object ID
     async delete(objectId) {
         return await this.collection.deleteOne({ _id: objectId });
     }
