@@ -241,17 +241,14 @@
     }
   },
 
-  "/carts/": {
+   "/carts/": {
     "get": {
       "tags": ["Carts"],
       "description": "Get all carts",
       "responses": {
         "200": { "description": "OK" },
         "500": { "description": "Internal Server Error" }
-      },
-      "security": [
-        { "GitHubOAuth": [] }
-      ]
+      }
     },
     "post": {
       "tags": ["Carts"],
@@ -310,14 +307,74 @@
         "400": { "description": "Bad Request" },
         "404": { "description": "Not Found" },
         "500": { "description": "Internal Server Error" }
-      },
-      "security": [
-        { "GitHubOAuth": [] }
-      ]
+      }
     }
   },
 
   "/carts/{id}": {
+    "get": {
+      "tags": ["Carts"],
+      "description": "Get cart by cartId",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "200": { "description": "OK" },
+        "400": { "description": "Bad Request" },
+        "404": { "description": "Not Found" },
+        "500": { "description": "Internal Server Error" }
+      }
+    },
+    "put": {
+      "tags": ["Carts"],
+      "description": "Update cart by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "cartId": {
+                "type": "string",
+                "example": "UC00X"
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "productId": { "type": "string", "example": "123456" },
+                    "quantity": { "type": "integer", "example": 2 }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": { "description": "OK" },
+        "400": { "description": "Bad Request" },
+        "401": { "description": "Unauthorized" },
+        "404": { "description": "Not Found" },
+        "500": { "description": "Internal Server Error" }
+      },
+      "security": [
+        { "GitHubOAuth": [] }
+      ]
+    },
     "delete": {
       "tags": ["Carts"],
       "description": "Delete cart by ID",

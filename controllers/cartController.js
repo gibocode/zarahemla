@@ -2,6 +2,27 @@ const Cart = require("../models/Cart");
 const ObjectId = require("mongodb").ObjectId;
 
 
+// Create cart
+const createCart = async (req, res) => {
+    try {
+        const data = req.body;
+        const cartData = {
+            cartId: data.cartId,
+            username: data.username,
+            cartItems: data.cartItems,
+        };
+        const cart = new Cart();
+        const result = await cart.create(cartData);
+        if (result.insertedId) {
+            res.status(204).send();
+        } else {
+            res.status(500).json(result.error || "Could not create cart.");
+        }
+    } catch (error) {
+        return res.status(500).json({ message: "Could not create cart." });
+    }
+};
+
 // GET ALL CARTS
 const getAllCarts = async (req, res) => {
     try {
@@ -30,9 +51,24 @@ const getCartByUser = async (req, res) => {
     }   
 };
 
-// Create cart
-const createCart = async (req, res) => {
+//Get cart by Id
+const getCartById = async (req, res) => {
     try {
+        const cartId = req.params.id;
+        const carts = new Cart();
+        const cart = await carts.getById(cartId);
+        if (!cart) {
+            return res.status(404).json({ message: "Cart not found." });
+        } res.status(200).json(cart);
+    } catch (error) {
+        return res.status(500).json({ message: "Could not retrieve specific cart."});
+    }
+};
+
+//update cart
+const updateCart = async (req, res) => {
+    try {
+        const cartId = req.params.id;
         const data = req.body;
         const cartData = {
             cartId: data.cartId,
@@ -40,16 +76,15 @@ const createCart = async (req, res) => {
             cartItems: data.cartItems,
         };
         const cart = new Cart();
-        const result = await cart.create(cartData);
-        if (result.insertedId) {
+        const result = await cart.update(cartId, cartData);
+        if (result.modifiedCount > 0) {
             res.status(204).send();
-        } else {
-            res.status(500).json(result.error || "Could not create cart.");
         }
     } catch (error) {
-        return res.status(500).json({ message: "Could not create cart." });
+        return res.status(500).json({ message: "Could not update cart." });
     }
 };
+
 
 // Delete cart
 const deleteCart = async (req, res) => {
@@ -72,4 +107,4 @@ const deleteCart = async (req, res) => {
     }
 };
 
-module.exports = { getAllCarts, getCartByUser, createCart, deleteCart };
+module.exports = { getAllCarts, getCartByUser, getCartById, createCart, updateCart,deleteCart };

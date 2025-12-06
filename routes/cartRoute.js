@@ -5,18 +5,22 @@ const { isAuthenticated } = require("../middleware/authenticate");
 
 
 // Get all carts
-router.get(
-    // #swagger.security = [{ "GitHubOAuth": [] }]
+router.get(    
     "/",
     cartController.getAllCarts
 );
 
 // Get all carts by user
-router.get(
-    // #swagger.security = [{ "GitHubOAuth": [] }]
+router.get(    
     "/user/:username",
     cartController.getCartByUser
 );
+
+//GEt cart by cartId
+router.get(
+    "/:id",
+    cartController.getCartById
+)
 
 // Create cart
 router.post(
@@ -27,6 +31,15 @@ router.post(
     cartValidator.checkCartData,
     cartController.createCart
 );
+
+router.put(
+    // #swagger.security = [{ "GitHubOAuth": [] }]
+    "/:id",
+    isAuthenticated,
+    cartValidator.cartDataValidationRules(),
+    cartValidator.checkCartData,
+    cartController.updateCart
+)
 
 // Delete cart by object ID
 router.delete(
