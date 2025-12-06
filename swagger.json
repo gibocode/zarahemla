@@ -92,7 +92,7 @@
         "tags": [
           "Products"
         ],
-        "summary": "Retrieve a product by ID",
+        "summary": "Retrieve a product by Object ID",
         "description": "",
         "parameters": [
           {
@@ -121,7 +121,7 @@
         "tags": [
           "Products"
         ],
-        "summary": "Update an existing product by ID",
+        "summary": "Update an existing product by Object ID",
         "description": "",
         "parameters": [
           {
@@ -188,7 +188,7 @@
         "tags": [
           "Products"
         ],
-        "summary": "Delete a product by ID",
+        "summary": "Delete a product by Object ID",
         "description": "",
         "parameters": [
           {
@@ -290,7 +290,7 @@
         "tags": [
           "Categories"
         ],
-        "summary": "Retrieve a category by ID",
+        "summary": "Retrieve a category by Object ID",
         "description": "",
         "parameters": [
           {
@@ -319,7 +319,7 @@
         "tags": [
           "Categories"
         ],
-        "summary": "Update an existing category by ID",
+        "summary": "Update an existing category by Object ID",
         "description": "",
         "parameters": [
           {
@@ -374,7 +374,7 @@
         "tags": [
           "Categories"
         ],
-        "summary": "Delete a category by ID",
+        "summary": "Delete a category by Object ID",
         "description": "",
         "parameters": [
           {
@@ -548,7 +548,7 @@
         "tags": [
           "Users"
         ],
-        "summary": "Delete a user by ID",
+        "summary": "Delete a user by Object ID",
         "description": "",
         "parameters": [
           {
@@ -587,6 +587,7 @@
         "tags": [
           "Carts"
         ],
+        "summary": "Retrieve all carts",
         "description": "",
         "responses": {
           "200": {
@@ -649,6 +650,7 @@
         "tags": [
           "Carts"
         ],
+        "summary": "Retrieve all carts from a user based on username",
         "description": "",
         "parameters": [
           {
@@ -671,15 +673,16 @@
         }
       }
     },
-    "/carts/{id}": {
+    "/carts/{cartId}": {
       "get": {
         "tags": [
           "Carts"
         ],
+        "summary": "Retrieve cart by cart ID",
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "cartId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -701,10 +704,11 @@
         "tags": [
           "Carts"
         ],
+        "summary": "Update an existing cart by cart ID",
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "cartId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -747,12 +751,14 @@
             "GitHubOAuth": []
           }
         ]
-      },
+      }
+    },
+    "/carts/{id}": {
       "delete": {
         "tags": [
           "Carts"
         ],
-        "summary": "Delete a cart by ID",
+        "summary": "Delete a cart by Object ID",
         "description": "",
         "parameters": [
           {

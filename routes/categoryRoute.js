@@ -13,7 +13,7 @@ router.get(
 
 // Get category by id
 router.get(
-    // #swagger.summary = 'Retrieve a category by ID"
+    // #swagger.summary = 'Retrieve a category by Object ID"
     "/:id",
     categoryController.getCategoryById
 );
@@ -31,7 +31,7 @@ router.post(
 
 // Update category
 router.put(
-    // #swagger.summary = 'Update an existing category by ID'
+    // #swagger.summary = 'Update an existing category by Object ID'
     // #swagger.security = [{ "GitHubOAuth": [] }]
     "/:id",
     isAuthenticated,
@@ -42,7 +42,7 @@ router.put(
 
 // Delete category
 router.delete(
-    // #swagger.summary = 'Delete a category by ID'
+    // #swagger.summary = 'Delete a category by Object ID'
     // #swagger.security = [{ "GitHubOAuth": [] }]
     "/:id",
     isAuthenticated,

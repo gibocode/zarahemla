@@ -48,7 +48,10 @@ You can update the documentation by `npm run swagger` or `node swagger.js`. The 
 ## Packages (Development)
 * jest
 * supertest
+* @types/node
+* nodemon
 
 ## Developers
 * Gilbor Camporazo Jr.
 * Nelson Alexander Ortega
+* Lau Eduardo Calle Urbina

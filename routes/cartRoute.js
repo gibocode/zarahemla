@@ -4,20 +4,23 @@ const cartValidator = require("../middleware/cartValidator");
 const { isAuthenticated } = require("../middleware/authenticate");
 
 // Get all carts
-router.get(    
+router.get(
+    // #swagger.summary = 'Retrieve all carts'
     "/",
     cartController.getAllCarts
 );
 
 // Get all carts by user
-router.get(    
+router.get(
+    // #swagger.summary = 'Retrieve all carts from a user based on username'
     "/user/:username",
     cartController.getCartByUser
 );
 
-//GEt cart by cartId
+// Get cart by cartId
 router.get(
-    "/:id",
+    // #swagger.summary = 'Retrieve cart by cart ID'
+    "/:cartId",
     cartController.getCartById
 )
 
@@ -33,8 +36,9 @@ router.post(
 );
 
 router.put(
+    // #swagger.summary = 'Update an existing cart by cart ID'
     // #swagger.security = [{ "GitHubOAuth": [] }]
-    "/:id",
+    "/:cartId",
     isAuthenticated,
     cartValidator.cartDataValidationRules(),
     cartValidator.checkCartData,
@@ -43,7 +47,7 @@ router.put(
 
 // Delete cart by object ID
 router.delete(
-    // #swagger.summary = 'Delete a cart by ID'
+    // #swagger.summary = 'Delete a cart by Object ID'
     // #swagger.security = [{ "GitHubOAuth": [] }]
     "/:id",
     isAuthenticated,

@@ -12,7 +12,7 @@ router.get(
 
 // Get one product by object ID
 router.get(
-    // #swagger.summary = 'Retrieve a product by ID'
+    // #swagger.summary = 'Retrieve a product by Object ID'
     "/:id",
     productController.getProductById
 );
@@ -30,7 +30,7 @@ router.post(
 
 // Update product by object ID
 router.put(
-    // #swagger.summary = 'Update an existing product by ID'
+    // #swagger.summary = 'Update an existing product by Object ID'
     // #swagger.security = [{ "GitHubOAuth": [] }]
     "/:id",
     isAuthenticated,
@@ -41,7 +41,7 @@ router.put(
 
 // Delete product by object ID
 router.delete(
-    // #swagger.summary = 'Delete a product by ID'
+    // #swagger.summary = 'Delete a product by Object ID'
     // #swagger.security = [{ "GitHubOAuth": [] }]
     "/:id",
     isAuthenticated,
