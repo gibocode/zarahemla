@@ -12,6 +12,10 @@ class Cart {
         return await this.collection.find({}).toArray();
     }
 
+    // Get by user
+    async getByUser(username) {
+        return await this.collection.find({ username: username }).toArray();
+    }
 
     // Create cart
     async create(cartData) {

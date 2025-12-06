@@ -11,6 +11,13 @@ router.get(
     cartController.getAllCarts
 );
 
+// Get all carts by user
+router.get(
+    // #swagger.security = [{ "GitHubOAuth": [] }]
+    "/user/:username",
+    cartController.getCartByUser
+);
+
 // Create cart
 router.post(
     // #swagger.security = [{ "GitHubOAuth": [] }]

@@ -13,6 +13,23 @@ const getAllCarts = async (req, res) => {
     }
 }
 
+// Get cart by user
+const getCartByUser = async (req, res) => {
+    try {
+        const username = req.params.username;
+        const carts = new Cart();
+        const userCarts = await carts.getByUser(username);
+
+        if (userCarts.length === 0) {
+            return res.status(404).json({ message: "No carts found for this user." });
+        }
+        res.status(200).json(userCarts);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "Could not retrieve carts for user." });
+    }   
+};
+
 // Create cart
 const createCart = async (req, res) => {
     try {
@@ -55,4 +72,4 @@ const deleteCart = async (req, res) => {
     }
 };
 
-module.exports = { getAllCarts, createCart, deleteCart };
+module.exports = { getAllCarts, getCartByUser, createCart, deleteCart };

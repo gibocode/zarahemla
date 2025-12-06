@@ -12,376 +12,334 @@
     "http"
   ],
   "paths": {
-    "/products/": {
-      "get": {
-        "tags": [
-          "Products"
-        ],
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Products"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "productId": {
-                  "example": "any"
-                },
-                "productName": {
-                  "example": "any"
-                },
-                "productDescription": {
-                  "example": "any"
-                },
-                "productColor": {
-                  "example": "any"
-                },
-                "productBrand": {
-                  "example": "any"
-                },
-                "productPrice": {
-                  "example": "any"
-                },
-                "productImage": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        },
-        "security": [
-          {
-            "GitHubOAuth": []
-          }
-        ]
+  "/products/": {
+    "get": {
+      "tags": ["Products"],
+      "description": "",
+      "responses": {
+        "200": { "description": "OK" },
+        "500": { "description": "Internal Server Error" }
       }
     },
-    "/products/{id}": {
-      "get": {
-        "tags": [
-          "Products"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Products"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "productId": {
-                  "example": "any"
-                },
-                "productName": {
-                  "example": "any"
-                },
-                "productDescription": {
-                  "example": "any"
-                },
-                "productColor": {
-                  "example": "any"
-                },
-                "productBrand": {
-                  "example": "any"
-                },
-                "productPrice": {
-                  "example": "any"
-                },
-                "productImage": {
-                  "example": "any"
-                }
-              }
+    "post": {
+      "tags": ["Products"],
+      "description": "",
+      "parameters": [
+        {
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "productId": { "example": "any" },
+              "productName": { "example": "any" },
+              "productDescription": { "example": "any" },
+              "productColor": { "example": "any" },
+              "productBrand": { "example": "any" },
+              "productPrice": { "example": "any" },
+              "productImage": { "example": "any" }
             }
           }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        },
-        "security": [
-          {
-            "GitHubOAuth": []
-          }
-        ]
+        }
+      ],
+      "responses": {
+        "204": { "description": "No Content" },
+        "400": { "description": "Bad Request" },
+        "401": { "description": "Unauthorized" },
+        "500": { "description": "Internal Server Error" }
       },
-      "delete": {
-        "tags": [
-          "Products"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        },
-        "security": [
-          {
-            "GitHubOAuth": []
-          }
-        ]
+      "security": [
+        { "GitHubOAuth": [] }
+      ]
+    }
+  },
+
+  "/products/{id}": {
+    "get": {
+      "tags": ["Products"],
+      "description": "",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "200": { "description": "OK" },
+        "400": { "description": "Bad Request" },
+        "404": { "description": "Not Found" },
+        "500": { "description": "Internal Server Error" }
       }
     },
-    "/categories/": {
-      "get": {
-        "tags": [
-          "Categories"
-        ],
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Categories"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "categoryName": {
-                  "example": "any"
-                },
-                "categoryDescription": {
-                  "example": "any"
-                },
-                "categoryId": {
-                  "example": "any"
-                }
-              }
+    "put": {
+      "tags": ["Products"],
+      "description": "",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "productId": { "example": "any" },
+              "productName": { "example": "any" },
+              "productDescription": { "example": "any" },
+              "productColor": { "example": "any" },
+              "productBrand": { "example": "any" },
+              "productPrice": { "example": "any" },
+              "productImage": { "example": "any" }
             }
           }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
         }
+      ],
+      "responses": {
+        "204": { "description": "No Content" },
+        "400": { "description": "Bad Request" },
+        "401": { "description": "Unauthorized" },
+        "404": { "description": "Not Found" },
+        "500": { "description": "Internal Server Error" }
+      },
+      "security": [
+        { "GitHubOAuth": [] }
+      ]
+    },
+    "delete": {
+      "tags": ["Products"],
+      "description": "",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "204": { "description": "No Content" },
+        "400": { "description": "Bad Request" },
+        "401": { "description": "Unauthorized" },
+        "404": { "description": "Not Found" },
+        "500": { "description": "Internal Server Error" }
+      },
+      "security": [
+        { "GitHubOAuth": [] }
+      ]
+    }
+  },
+
+  "/categories/": {
+    "get": {
+      "tags": ["Categories"],
+      "description": "",
+      "responses": {
+        "200": { "description": "OK" },
+        "500": { "description": "Internal Server Error" }
       }
     },
-    "/categories/{id}": {
-      "get": {
-        "tags": [
-          "Categories"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Categories"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Categories"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "categoryId": {
-                  "example": "any"
-                },
-                "categoryName": {
-                  "example": "any"
-                },
-                "categoryDescription": {
-                  "example": "any"
-                }
-              }
+    "post": {
+      "tags": ["Categories"],
+      "description": "",
+      "parameters": [
+        {
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "categoryName": { "example": "any" },
+              "categoryDescription": { "example": "any" },
+              "categoryId": { "example": "any" }
             }
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
         }
+      ],
+      "responses": {
+        "204": { "description": "No Content" },
+        "400": { "description": "Bad Request" },
+        "401": { "description": "Unauthorized" },
+        "500": { "description": "Internal Server Error" }
       }
     }
+  },
+
+  "/categories/{id}": {
+    "get": {
+      "tags": ["Categories"],
+      "description": "",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "200": { "description": "OK" },
+        "400": { "description": "Bad Request" },
+        "404": { "description": "Not Found" },
+        "500": { "description": "Internal Server Error" }
+      }
+    },
+    "delete": {
+      "tags": ["Categories"],
+      "description": "",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "200": { "description": "OK" },
+        "400": { "description": "Bad Request" },
+        "401": { "description": "Unauthorized" },
+        "404": { "description": "Not Found" },
+        "500": { "description": "Internal Server Error" }
+      }
+    },
+    "put": {
+      "tags": ["Categories"],
+      "description": "",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "categoryId": { "example": "any" },
+              "categoryName": { "example": "any" },
+              "categoryDescription": { "example": "any" }
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": { "description": "OK" },
+        "400": { "description": "Bad Request" },
+        "401": { "description": "Unauthorized" },
+        "404": { "description": "Not Found" },
+        "500": { "description": "Internal Server Error" }
+      }
+    }
+  },
+
+  "/carts/": {
+    "get": {
+      "tags": ["Carts"],
+      "description": "Get all carts",
+      "responses": {
+        "200": { "description": "OK" },
+        "500": { "description": "Internal Server Error" }
+      },
+      "security": [
+        { "GitHubOAuth": [] }
+      ]
+    },
+    "post": {
+      "tags": ["Carts"],
+      "description": "Create cart",
+      "parameters": [
+        {
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "cartId": {
+                "type": "string",
+                "example": "UC00X"
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "productId": { "type": "string", "example": "123456" },
+                    "quantity": { "type": "integer", "example": 2 }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "responses": {
+        "201": { "description": "Created" },
+        "400": { "description": "Bad Request" },
+        "401": { "description": "Unauthorized" },
+        "500": { "description": "Internal Server Error" }
+      },
+      "security": [
+        { "GitHubOAuth": [] }
+      ]
+    }
+  },
+
+  "/carts/user/{username}": {
+    "get": {
+      "tags": ["Carts"],
+      "description": "Get carts by username",
+      "parameters": [
+        {
+          "name": "username",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "200": { "description": "OK" },
+        "400": { "description": "Bad Request" },
+        "404": { "description": "Not Found" },
+        "500": { "description": "Internal Server Error" }
+      },
+      "security": [
+        { "GitHubOAuth": [] }
+      ]
+    }
+  },
+
+  "/carts/{id}": {
+    "delete": {
+      "tags": ["Carts"],
+      "description": "Delete cart by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "204": { "description": "No Content" },
+        "400": { "description": "Bad Request" },
+        "401": { "description": "Unauthorized" },
+        "404": { "description": "Not Found" },
+        "500": { "description": "Internal Server Error" }
+      },
+      "security": [
+        { "GitHubOAuth": [] }
+      ]
+    }
   }
+}
 }
