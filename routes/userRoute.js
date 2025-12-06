@@ -14,7 +14,6 @@ router.get(
 router.get(
     // #swagger.summary = 'Retrieve a user by Object ID'
     "/:id",
-    isAuthenticated,
     userController.getUserById
 );
 

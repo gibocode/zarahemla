@@ -58,12 +58,19 @@ const getAllUsers = async (req, res) => {
 // Update user
 const updateUser = async (req, res) => {
     try {
+        const data = req.body;
+        const userData = {
+            gitHubId: data.gitHubId,
+            username: data.username,
+            displayName: data.displayName
+        };
         const id = req.params.id;
         if (ObjectId.isValid(id) === false) {
             return res.status(400).json({ message: "Invalid user ID." });
         }
         const user = new User();
-        const result = await user.updateById(id, req.body);
+        const objectId = new ObjectId(id);
+        const result = await user.updateById(objectId, userData);
 
         if (!result || result.modifiedCount === 0) {
             return res.status(404).json({ message: 'User not found.' });
@@ -83,7 +90,8 @@ const deleteUser = async (req, res) => {
             return res.status(400).json({ message: "Invalid user ID." });
         }
         const user = new User();
-        const result = await user.deleteById(id);
+        const objectId = new ObjectId(id);
+        const result = await user.deleteById(objectId);
 
         if (!result || result.deletedCount === 0) {
             return res.status(404).json({ message: 'User not found.' });

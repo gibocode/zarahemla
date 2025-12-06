@@ -7,6 +7,11 @@ class User {
         this.collection = database.getDatabase().db().collection("users");
     }
 
+    // Get user by object ID
+    async getByObjectId(objectId) {
+        return await this.collection.findOne({ _id: objectId });
+    }
+
     // Get user by GitHub ID
     async getByGitHubId(gitHubId) {
         return await this.collection.findOne({ gitHubId: gitHubId });
