@@ -4,13 +4,22 @@ const productValidator = require("../middleware/productValidator");
 const { isAuthenticated } = require("../middleware/authenticate");
 
 // Get all products
-router.get("/", productController.getAllProducts);
+router.get(
+    // #swagger.summary = 'Retrieve all products'
+    "/",
+    productController.getAllProducts
+);
 
 // Get one product by object ID
-router.get("/:id", productController.getProductById);
+router.get(
+    // #swagger.summary = 'Retrieve a product by ID'
+    "/:id",
+    productController.getProductById
+);
 
 // Create product
 router.post(
+    // #swagger.summary = 'Create a new product'
     // #swagger.security = [{ "GitHubOAuth": [] }]
     "/",
     isAuthenticated,
@@ -21,6 +30,7 @@ router.post(
 
 // Update product by object ID
 router.put(
+    // #swagger.summary = 'Update an existing product by ID'
     // #swagger.security = [{ "GitHubOAuth": [] }]
     "/:id",
     isAuthenticated,
@@ -31,6 +41,7 @@ router.put(
 
 // Delete product by object ID
 router.delete(
+    // #swagger.summary = 'Delete a product by ID'
     // #swagger.security = [{ "GitHubOAuth": [] }]
     "/:id",
     isAuthenticated,

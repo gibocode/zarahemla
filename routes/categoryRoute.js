@@ -5,13 +5,23 @@ const { isAuthenticated } = require("../middleware/authenticate");
 
 
 // Get all Categories
-router.get("/", categoryController.getAllCategories);
-// Get category by id
-router.get("/:id", categoryController.getCategoryById);
+router.get(
+    // #swagger.summary = 'Retrieve all categories'
+    "/",
+    categoryController.getAllCategories
+);
 
+// Get category by id
+router.get(
+    // #swagger.summary = 'Retrieve a category by ID"
+    "/:id",
+    categoryController.getCategoryById
+);
 
 // Create category
 router.post(
+    // #swagger.summary = 'Create a new category'
+    // #swagger.security = [{ "GitHubOAuth": [] }]
     "/",
     isAuthenticated,
     categoryValidator.categoryCreateDataValidationRules(),
@@ -19,19 +29,24 @@ router.post(
     categoryController.createCategory
 );
 
-// Delete category
-router.delete(
-    "/:id",
-    isAuthenticated,
-    categoryController.deleteCategory
-);
-
 // Update category
 router.put(
+    // #swagger.summary = 'Update an existing category by ID'
+    // #swagger.security = [{ "GitHubOAuth": [] }]
     "/:id",
     isAuthenticated,
     categoryValidator.categoryUpdateDataValidationRules(),
     categoryValidator.checkCategoryData,
     categoryController.updateCategory
 );
+
+// Delete category
+router.delete(
+    // #swagger.summary = 'Delete a category by ID'
+    // #swagger.security = [{ "GitHubOAuth": [] }]
+    "/:id",
+    isAuthenticated,
+    categoryController.deleteCategory
+);
+
 module.exports = router;

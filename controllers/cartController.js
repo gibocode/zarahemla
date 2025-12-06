@@ -1,7 +1,6 @@
 const Cart = require("../models/Cart");
 const ObjectId = require("mongodb").ObjectId;
 
-
 // Create cart
 const createCart = async (req, res) => {
     try {
@@ -85,7 +84,6 @@ const updateCart = async (req, res) => {
     }
 };
 
-
 // Delete cart
 const deleteCart = async (req, res) => {
     try {
@@ -107,4 +105,4 @@ const deleteCart = async (req, res) => {
     }
 };
 
-module.exports = { getAllCarts, getCartByUser, getCartById, createCart, updateCart,deleteCart };
+module.exports = { getAllCarts, getCartByUser, getCartById, createCart, updateCart, deleteCart };
