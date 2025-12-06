@@ -17,6 +17,7 @@
         "tags": [
           "Products"
         ],
+        "summary": "Retrieve all products",
         "description": "",
         "responses": {
           "200": {
@@ -26,11 +27,18 @@
             "description": "Internal Server Error"
           }
         }
+      ],
+      "responses": {
+        "204": { "description": "No Content" },
+        "400": { "description": "Bad Request" },
+        "401": { "description": "Unauthorized" },
+        "500": { "description": "Internal Server Error" }
       },
       "post": {
         "tags": [
           "Products"
         ],
+        "summary": "Create a new product",
         "description": "",
         "parameters": [
           {
@@ -90,6 +98,7 @@
         "tags": [
           "Products"
         ],
+        "summary": "Retrieve a product by ID",
         "description": "",
         "parameters": [
           {
@@ -113,11 +122,19 @@
             "description": "Internal Server Error"
           }
         }
+      ],
+      "responses": {
+        "204": { "description": "No Content" },
+        "400": { "description": "Bad Request" },
+        "401": { "description": "Unauthorized" },
+        "404": { "description": "Not Found" },
+        "500": { "description": "Internal Server Error" }
       },
       "put": {
         "tags": [
           "Products"
         ],
+        "summary": "Update an existing product by ID",
         "description": "",
         "parameters": [
           {
@@ -184,6 +201,7 @@
         "tags": [
           "Products"
         ],
+        "summary": "Delete a product by ID",
         "description": "",
         "parameters": [
           {
@@ -222,6 +240,7 @@
         "tags": [
           "Categories"
         ],
+        "summary": "Retrieve all categories",
         "description": "",
         "responses": {
           "200": {
@@ -236,6 +255,7 @@
         "tags": [
           "Categories"
         ],
+        "summary": "Create a new category",
         "description": "",
         "parameters": [
           {
@@ -270,7 +290,12 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "GitHubOAuth": []
+          }
+        ]
       }
     },
     "/categories/{id}": {
@@ -278,6 +303,7 @@
         "tags": [
           "Categories"
         ],
+        "summary": "Retrieve a category by ID",
         "description": "",
         "parameters": [
           {
@@ -301,42 +327,18 @@
             "description": "Internal Server Error"
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "Categories"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
+      ],
+      "responses": {
+        "201": { "description": "Created" },
+        "400": { "description": "Bad Request" },
+        "401": { "description": "Unauthorized" },
+        "500": { "description": "Internal Server Error" }
       },
       "put": {
         "tags": [
           "Categories"
         ],
+        "summary": "Update an existing category by ID",
         "description": "",
         "parameters": [
           {
@@ -380,18 +382,36 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
-      }
-    },
-    "/users/": {
-      "get": {
+        },
+        "security": [
+          {
+            "GitHubOAuth": []
+          }
+        ]
+      },
+      "delete": {
         "tags": [
-          "Users"
+          "Categories"
         ],
+        "summary": "Delete a category by ID",
         "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "404": {
             "description": "Not Found"
@@ -399,12 +419,20 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
-      },
+        },
+        "security": [
+          {
+            "GitHubOAuth": []
+          }
+        ]
+      }
+    },
+    "/carts/": {
       "post": {
         "tags": [
-          "Users"
+          "Carts"
         ],
+        "summary": "Create a new cart",
         "description": "",
         "parameters": [
           {
@@ -413,13 +441,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "gitHubId": {
+                "cartId": {
                   "example": "any"
                 },
                 "username": {
                   "example": "any"
                 },
-                "displayName": {
+                "cartItems": {
                   "example": "any"
                 }
               }
@@ -439,76 +467,20 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "GitHubOAuth": []
+          }
+        ]
       }
     },
-    "/users/{id}": {
-      "get": {
-        "tags": [
-          "Users"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Users"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
+    "/carts/{id}": {
       "delete": {
         "tags": [
-          "Users"
+          "Carts"
         ],
+        "summary": "Delete a cart by ID",
         "description": "",
         "parameters": [
           {
@@ -519,8 +491,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "204": {
+            "description": "No Content"
           },
           "400": {
             "description": "Bad Request"
@@ -534,8 +506,14 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "GitHubOAuth": []
+          }
+        ]
       }
     }
   }
+}
 }
